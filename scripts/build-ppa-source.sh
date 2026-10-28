@@ -7,8 +7,9 @@ set -euo pipefail
 
 DISTRO="${1:-noble}"
 GPG_KEY="${2:-}"
+REV="${3:-2}"
 VERSION="2.0.0"
-DEB_VERSION="${VERSION}-1~${DISTRO}1"
+DEB_VERSION="${VERSION}-1~${DISTRO}${REV}"
 
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 BUILD_DIR="${ROOT_DIR}/build-ppa"

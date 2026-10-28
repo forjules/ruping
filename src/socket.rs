@@ -5,7 +5,7 @@ use std::time::{Duration, Instant};
 use crate::host::Host;
 use crate::standard::*;
 
-unsafe extern "C" {
+extern "C" {
     fn gethostbyname(name: *const libc::c_char) -> *mut libc::hostent;
 }
 
@@ -72,10 +72,10 @@ impl Socket {
                 Ok(time_ms)
             }
             Err(e) => {
-                if let Some(code) = e.raw_os_error()
-                    && matches!(code, libc::EMFILE | libc::ENFILE | libc::EACCES)
-                {
-                    return Err(ERROR_SOCKET_GENERALFAILURE);
+                if let Some(code) = e.raw_os_error() {
+                    if matches!(code, libc::EMFILE | libc::ENFILE | libc::EACCES) {
+                        return Err(ERROR_SOCKET_GENERALFAILURE);
+                    }
                 }
                 Err(ERROR_SOCKET_TIMEOUT)
             }

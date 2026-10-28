@@ -1,7 +1,7 @@
 [package]
 name = "ruping"
 version = "2.0.0"
-edition = "2024"
+edition = "2021"
 
 [dependencies]
 ctrlc = "3.5.2"
