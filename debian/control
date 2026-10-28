@@ -1,0 +1,15 @@
+Source: ruping
+Section: net
+Priority: optional
+Maintainer: jSSH.app <forjules@proton.me>
+Build-Depends: debhelper-compat (= 13), cargo, rustc
+Standards-Version: 4.6.2
+Homepage: https://github.com/forjules/ruping
+
+Package: ruping
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: High-performance TCP port ping utility written in Rust
+ ruPING is a network utility designed to test TCP connectivity and measure
+ round-trip connection latency to arbitrary hosts and ports, similar to
+ ICMP ping but over TCP. It is a full Linux reimplementation of paping.

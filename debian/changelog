@@ -1,0 +1,5 @@
+ruping (2.0.0-1~noble1) noble; urgency=medium
+
+  * Initial PPA release for Ubuntu 24.04 (noble).
+
+ -- jSSH.app <forjules@proton.me>  Wed, 28 Oct 2026 16:45:00 +0200
