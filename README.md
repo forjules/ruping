@@ -49,11 +49,11 @@ Download and install the prebuilt `.deb` package:
 
 ```bash
 # Direct install from the repo
-sudo dpkg -i dist/ruping_2.0.2-1_amd64.deb
+sudo dpkg -i dist/ruping_2.0.3-1_amd64.deb
 
 # Or download from latest GitHub releases
-wget https://github.com/forjules/ruping/releases/latest/download/ruping_2.0.2-1_amd64.deb
-sudo dpkg -i ruping_2.0.2-1_amd64.deb
+wget https://github.com/forjules/ruping/releases/latest/download/ruping_2.0.3-1_amd64.deb
+sudo dpkg -i ruping_2.0.3-1_amd64.deb
 ```
 
 To uninstall:

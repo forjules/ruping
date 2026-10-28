@@ -9,6 +9,7 @@ export DEB_BUILD_MAINT_OPTIONS = hardening=+all
 override_dh_auto_configure:
 	mkdir -p $(CARGO_HOME)
 	sed -i 's/version = 4/version = 3/' Cargo.lock || true
+	python3 -c 'import json, glob; [json.dump(dict(d, files={k: v for k, v in d.get("files", {}).items() if not k.endswith(".orig")}), open(p, "w")) for p in glob.glob("vendor/**/.cargo-checksum.json", recursive=True) for d in [json.load(open(p))]]' || true
 
 override_dh_auto_build:
 	cargo build --release --offline

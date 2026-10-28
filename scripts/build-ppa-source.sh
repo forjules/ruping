@@ -37,6 +37,24 @@ if [ -f Cargo.lock ]; then
     sed -i 's/version = 4/version = 3/' Cargo.lock
 fi
 
+echo "==> Removing .orig files and scrubbing them from .cargo-checksum.json..."
+python3 -c '
+import json, glob, os
+
+for path in glob.glob("vendor/**/.cargo-checksum.json", recursive=True):
+    with open(path, "r") as f:
+        data = json.load(f)
+    if "files" in data:
+        data["files"] = {k: v for k, v in data["files"].items() if not k.endswith(".orig")}
+        with open(path, "w") as f:
+            json.dump(data, f)
+
+for root, dirs, files in os.walk("vendor"):
+    for file in files:
+        if file.endswith(".orig"):
+            os.remove(os.path.join(root, file))
+'
+
 mkdir -p .cargo
 cat << 'EOF' > .cargo/config.toml
 [source.crates-io]
