@@ -25,17 +25,35 @@ Standard ICMP `ping` only tests whether a remote host replies to ICMP echo reque
 
 ## 📦 Installation
 
-### Method 1: Debian / Ubuntu / Pop!_OS (`.deb` Package)
+### Method 1: Ubuntu / Pop!_OS via PPA (Launchpad)
+
+Install directly via the official Launchpad PPA repository:
+
+```bash
+sudo add-apt-repository ppa:forjules/ruping
+sudo apt update
+sudo apt install ruping
+```
+
+To remove:
+```bash
+sudo apt remove ruping
+sudo add-apt-repository --remove ppa:forjules/ruping
+```
+
+---
+
+### Method 2: Debian / Ubuntu / Pop!_OS (`.deb` Package)
 
 Download and install the prebuilt `.deb` package:
 
 ```bash
 # Direct install from the repo
-sudo dpkg -i dist/ruping_2.0.0-1_amd64.deb
+sudo dpkg -i dist/ruping_2.0.2-1_amd64.deb
 
 # Or download from latest GitHub releases
-wget https://github.com/forjules/ruping/releases/latest/download/ruping_2.0.0-1_amd64.deb
-sudo dpkg -i ruping_2.0.0-1_amd64.deb
+wget https://github.com/forjules/ruping/releases/latest/download/ruping_2.0.2-1_amd64.deb
+sudo dpkg -i ruping_2.0.2-1_amd64.deb
 ```
 
 To uninstall:
@@ -45,7 +63,7 @@ sudo apt remove ruping
 
 ---
 
-### Method 2: One-Line Installer
+### Method 3: One-Line Installer
 
 Run the included installer to build and link `ruping` directly into `/usr/local/bin`:
 
@@ -57,7 +75,7 @@ cd ruping
 
 ---
 
-### Method 3: Install via Cargo
+### Method 4: Install via Cargo
 
 If you have Rust and Cargo installed:
 

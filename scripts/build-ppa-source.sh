@@ -32,6 +32,11 @@ echo "==> Vendoring crate dependencies for offline Launchpad builder..."
 CARGO_BIN="$(command -v cargo || echo "${HOME}/.cargo/bin/cargo")"
 "${CARGO_BIN}" vendor vendor
 
+# Ensure Cargo.lock is v3 for compatibility with Launchpad's Cargo 1.75
+if [ -f Cargo.lock ]; then
+    sed -i 's/version = 4/version = 3/' Cargo.lock
+fi
+
 mkdir -p .cargo
 cat << 'EOF' > .cargo/config.toml
 [source.crates-io]

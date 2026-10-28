@@ -3,7 +3,7 @@ set -euo pipefail
 
 # Build .deb package for ruPING
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-VERSION="2.0.0-1"
+VERSION="$(grep -m1 '^version = ' "${ROOT_DIR}/Cargo.toml" | cut -d '"' -f2)-1"
 PKG_NAME="ruping_${VERSION}_amd64"
 DIST_DIR="${ROOT_DIR}/dist"
 PKG_DIR="${DIST_DIR}/${PKG_NAME}"

@@ -8,6 +8,7 @@ export DEB_BUILD_MAINT_OPTIONS = hardening=+all
 
 override_dh_auto_configure:
 	mkdir -p $(CARGO_HOME)
+	sed -i 's/version = 4/version = 3/' Cargo.lock || true
 
 override_dh_auto_build:
 	cargo build --release --offline
