@@ -1,0 +1,45 @@
+name: CI & Packaging
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Rust
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          components: clippy, rustfmt
+
+      - name: Rustfmt Check
+        run: cargo fmt --check || true
+
+      - name: Clippy Linter
+        run: cargo clippy -- -D warnings
+
+      - name: Run Tests
+        run: cargo test --verbose
+
+      - name: Build Release Binary
+        run: cargo build --release
+
+      - name: Build Debian Package (.deb)
+        run: ./scripts/build-deb.sh
+
+      - name: Upload .deb Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ruping-debian-package
+          path: dist/*.deb
+
+      - name: Upload Standalone Binary
+        uses: actions/upload-artifact@v4
+        with:
+          name: ruping-linux-amd64
+          path: target/release/ruping
