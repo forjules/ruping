@@ -1,11 +1,5 @@
-ruping (2.0.0-1~noble2) noble; urgency=medium
+ruping (2.0.1-1~noble1) noble; urgency=medium
 
-  * Fix edition for Launchpad Cargo 1.75 compatibility (use 2021 edition).
+  * Fix for Launchpad Cargo 1.75 compatibility (Rust 2021 edition).
 
- -- jSSH.app <forjules@proton.me>  Wed, 28 Oct 2026 17:15:00 +0200
-
-ruping (2.0.0-1~noble1) noble; urgency=medium
-
-  * Initial PPA release for Ubuntu 24.04 (noble).
-
- -- jSSH.app <forjules@proton.me>  Wed, 28 Oct 2026 16:45:00 +0200
+ -- Giuliano (forjules) <forjules@proton.me>  Wed, 28 Oct 2026 17:20:00 +0200

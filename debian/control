@@ -1,7 +1,7 @@
 Source: ruping
 Section: net
 Priority: optional
-Maintainer: jSSH.app <forjules@proton.me>
+Maintainer: Giuliano (forjules) <forjules@proton.me>
 Build-Depends: debhelper-compat (= 13), cargo, rustc
 Standards-Version: 4.6.2
 Homepage: https://github.com/forjules/ruping

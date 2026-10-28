@@ -7,11 +7,10 @@ set -euo pipefail
 
 DISTRO="${1:-noble}"
 GPG_KEY="${2:-}"
-REV="${3:-2}"
-VERSION="2.0.0"
-DEB_VERSION="${VERSION}-1~${DISTRO}${REV}"
-
+REV="${3:-1}"
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+VERSION="$(grep -m1 '^version = ' "${ROOT_DIR}/Cargo.toml" | cut -d '"' -f2)"
+DEB_VERSION="${VERSION}-1~${DISTRO}${REV}"
 BUILD_DIR="${ROOT_DIR}/build-ppa"
 
 echo "==> Preparing ruPING for Launchpad PPA (Target: Ubuntu ${DISTRO})..."
@@ -48,7 +47,7 @@ ruping (${DEB_VERSION}) ${DISTRO}; urgency=medium
 
   * PPA release for Ubuntu ${DISTRO}.
 
- -- jSSH.app <forjules@proton.me>  $(date -R)
+ -- Giuliano (forjules) <forjules@proton.me>  $(date -R)
 EOF
 
 echo "==> Creating orig.tar.gz tarball..."
